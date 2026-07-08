@@ -210,23 +210,20 @@ mock_json_data = {
 # --- 3. HARD OVERRIDE BYPASS CONNECTION ---
 def bypass_gemini_call(prompt_text):
     import streamlit as st
-    import requests
-    
-    api_key = st.secrets["GEMINI_API_KEY"]
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
-    headers = {'Content-Type': 'application/json'}
+    import google.generativeai as genai
     
     try:
-        payload = {
-            "contents": [{"parts": [{"text": prompt_text}]}]
-        }
-        response = requests.post(url, headers=headers, json=payload, timeout=15)
-        res_json = response.json()
+        api_key = st.secrets["GEMINI_API_KEY"]
+        genai.configure(api_key=api_key)
         
-        if 'candidates' in res_json and res_json['candidates']:
-            return res_json['candidates'][0]['content']['parts'][0]['text']
+        model = genai.GenerativeModel("gemini-1.5-flash")
+        response = model.generate_content(prompt_text)
+        
+        if response and response.text:
+            return response.text
         else:
-            return f"API Error: {res_json}"
+            return "API Error: Empty response from Gemini."
+            
     except Exception as e:
         return f"System Agent Sync Offline. Error Detail: {str(e)}"
 def run_nexus_intelligence(data_input):
