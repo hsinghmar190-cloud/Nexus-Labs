@@ -219,8 +219,8 @@ def bypass_gemini_call(prompt_text):
         response = requests.post(url, headers=headers, json=payload, timeout=15)
         res_json = response.json()
         return res_json['candidates'][0]['content']['parts'][0]['text']
-    except Exception:
-        return "System Agent Sync Offline: Target database override applied configuration maps verified successfully."
+    except Exception as e:
+        return f"System Agent Sync Offline. Error Detail: {str(e)}"
 
 def run_nexus_intelligence(data_input):
     data_str = json.dumps(data_input)
