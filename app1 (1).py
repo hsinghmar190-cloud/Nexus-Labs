@@ -214,6 +214,7 @@ def bypass_gemini_call(prompt_text):
     import json
     
     api_key = st.secrets["GEMINI_API_KEY"]
+    # v1beta एंडपॉइंट का बिल्कुल सही और सटीक स्ट्रक्चर
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
     
     try:
