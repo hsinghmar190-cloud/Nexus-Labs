@@ -1,0 +1,76 @@
+{
+  "district": "Ganganagar",
+  "generated_at": "2026-07-07T17:28:00+05:30",
+  "health_centers": [
+    {
+      "center_id": "PHC-001",
+      "name": "Suratgarh PHC",
+      "type": "PHC",
+      "medicine_stock_percent": 14,
+      "critical_medicines_out": ["Paracetamol", "ORS Packets", "Amoxicillin"],
+      "doctors_present": 0,
+      "doctors_assigned": 2,
+      "beds_total": 10,
+      "beds_occupied": 9,
+      "patient_footfall_today": 78,
+      "avg_footfall_last_7_days": 45,
+      "status_flag": "CRITICAL"
+    },
+    {
+      "center_id": "CHC-002",
+      "name": "Bikaner CHC",
+      "type": "CHC",
+      "medicine_stock_percent": 92,
+      "critical_medicines_out": [],
+      "doctors_present": 5,
+      "doctors_assigned": 5,
+      "beds_total": 30,
+      "beds_occupied": 11,
+      "patient_footfall_today": 62,
+      "avg_footfall_last_7_days": 58,
+      "status_flag": "SURPLUS"
+    },
+    {
+      "center_id": "PHC-003",
+      "name": "Raisinghnagar PHC",
+      "type": "PHC",
+      "medicine_stock_percent": 47,
+      "critical_medicines_out": ["Insulin"],
+      "doctors_present": 1,
+      "doctors_assigned": 2,
+      "beds_total": 8,
+      "beds_occupied": 6,
+      "patient_footfall_today": 35,
+      "avg_footfall_last_7_days": 33,
+      "status_flag": "MODERATE"
+    },
+    {
+      "center_id": "CHC-004",
+      "name": "Hanumangarh CHC",
+      "type": "CHC",
+      "medicine_stock_percent": 61,
+      "critical_medicines_out": [],
+      "doctors_present": 3,
+      "doctors_assigned": 4,
+      "beds_total": 25,
+      "beds_occupied": 20,
+      "patient_footfall_today": 90,
+      "avg_footfall_last_7_days": 71,
+      "status_flag": "UNDER_PRESSURE"
+    },
+    {
+      "center_id": "PHC-005",
+      "name": "Sadulshahar PHC",
+      "type": "PHC",
+      "medicine_stock_percent": 18,
+      "critical_medicines_out": ["Antibiotics (Broad Spectrum)", "IV Fluids"],
+      "doctors_present": 1,
+      "doctors_assigned": 1,
+      "beds_total": 6,
+      "beds_occupied": 6,
+      "patient_footfall_today": 40,
+      "avg_footfall_last_7_days": 29,
+      "status_flag": "CRITICAL"
+    }
+  ]
+}
