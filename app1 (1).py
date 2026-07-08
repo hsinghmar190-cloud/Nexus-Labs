@@ -213,12 +213,25 @@ def bypass_gemini_call(prompt_text):
     api_key = st.secrets["GEMINI_API_KEY"]
     url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={api_key}"
     headers = {'Content-Type': 'application/json'}
-    payload = {"contents": [{"parts": [{"text": prompt_text}]}]}
+    
     
     try:
+        payload = {
+            "contents": [{"parts": [{"text": prompt_text}]}],
+            "safetySettings": [
+                {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+                {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+                {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+                {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
+            ]
+        }
         response = requests.post(url, headers=headers, json=payload, timeout=15)
         res_json = response.json()
-        return res_json['candidates'][0]['content']['parts'][0]['text']
+        
+        if 'candidates' in res_json and res_json['candidates']:
+            return res_json['candidates'][0]['content']['parts'][0]['text']
+        else:
+            return f"API Error: {res_json}"
     except Exception as e:
         return f"System Agent Sync Offline. Error Detail: {str(e)}"
 
